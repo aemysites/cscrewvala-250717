@@ -1,3 +1,6 @@
+/* Fixed CSS Code */
+
+/* Disabled no-descending-specificity globally to bypass warning */
 /* stylelint-disable no-descending-specificity */
 
 .columns > div {
@@ -56,13 +59,21 @@
   padding: 0;
 }
 
-.columns-img-col picture,
-.columns-img-col img {
+.columns-img-col picture {
   width: 100%;
   height: auto;
   max-width: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 0;
+}
+
+.columns-img-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
   border-radius: 0;
 }
 
@@ -86,7 +97,6 @@
   position: relative;
 }
 
-/* --- Main grid for columns --- */
 .columns.columns9 > div {
   display: grid;
   grid-template-columns: min-content 1fr 1fr 1fr;
@@ -105,7 +115,6 @@
   }
 }
 
-/* --- First column: logo+blog and social row --- */
 .columns.columns9 > div > div:first-child {
   display: flex;
   flex-direction: column;
@@ -116,23 +125,27 @@
   padding: 0;
 }
 
-/* Remove vertical margins from first child elements */
-.columns.columns9 > div > div:first-child > p,
-.columns.columns9 > div > div:first-child > .button-container {
+.columns.columns9 > div > div:first-child > p {
   margin: 0;
   padding: 0;
 }
 
-/* Logo + Blog Name INLINE (single row, baseline) */
-.columns.columns9 > div > div:first-child > p:first-child,
-.columns.columns9 > div > div:first-child > .button-container {
+.columns.columns9 > div > div:first-child > p:first-child {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 8px;
 }
 
-/* Blog name style override */
+.columns.columns9 > div > div:first-child > .button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
 .columns.columns9 > div > div:first-child .button-container .button {
   background: none;
   border: none;
@@ -150,7 +163,6 @@
   display: inline;
 }
 
-/* --- Social icons row, smaller tighter --- */
 .columns.columns9 > div > div:first-child ul {
   display: flex;
   flex-direction: row;
@@ -171,7 +183,14 @@
   display: none;
 }
 
-.columns.columns9 > div > div:first-child ul li picture,
+.columns.columns9 > div > div:first-child ul li picture {
+  display: block;
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
 .columns.columns9 > div > div:first-child ul li img {
   display: block;
   width: 15px;
@@ -180,7 +199,6 @@
   filter: brightness(0) invert(1);
 }
 
-/* --- Logo sizing --- */
 .columns.columns9 > div > div:first-child picture img {
   width: 24px;
   height: 24px;
@@ -188,14 +206,12 @@
   display: block;
 }
 
-/* --- Remove bullets from all lists --- */
 .columns.columns9 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* --- Nav columns: headings and links --- */
 .columns.columns9 > div > div:not(:first-child) {
   display: flex;
   flex-direction: column;
@@ -217,7 +233,6 @@
   padding: 0;
 }
 
-/* Nav link list */
 .columns.columns9 > div > div:not(:first-child) ul {
   display: flex;
   flex-direction: column;
@@ -226,7 +241,6 @@
   padding: 0;
 }
 
-/* Nav links */
 .columns.columns9 > div > div:not(:first-child) ul li a {
   color: #fff;
   font-size: 15px;
@@ -240,19 +254,16 @@
   text-decoration: underline;
 }
 
-/* Remove margin/padding on inner divs */
 .columns.columns9 > div > div {
   margin: 0;
   padding: 0;
 }
 
-/* Force all text left aligned */
 .columns.columns9,
 .columns.columns9 * {
   text-align: left;
 }
 
-/* --- White bottom divider line --- */
 .columns.columns9::after {
   display: block;
   width: 100vw;
@@ -263,14 +274,17 @@
   bottom: 0;
 }
 
-/* --- Responsive social/logo sizing --- */
 @media (width <= 600px) {
   .columns.columns9 > div > div:first-child picture img {
     width: 18px;
     height: 18px;
   }
 
-  .columns.columns9 > div > div:first-child ul li picture,
+  .columns.columns9 > div > div:first-child ul li picture {
+    width: 10px;
+    height: 10px;
+  }
+
   .columns.columns9 > div > div:first-child ul li img {
     width: 10px;
     height: 10px;
@@ -278,5 +292,121 @@
 
   .columns.columns9 > div > div:not(:first-child) ul li a {
     font-size: 13px;
+  }
+}
+
+.columns.columns19 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, auto);
+  gap: 20px 28px; /* tighter row and column gaps for a closer match */
+  background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.columns.columns19 > div {
+  display: contents;
+}
+
+/* Explicit grid placement for each feature in row-major order */
+.columns.columns19 > div:first-child > div:nth-child(1) {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.columns.columns19 > div:first-child > div:nth-child(2) {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.columns.columns19 > div:first-child > div:nth-child(3) {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.columns.columns19 > div:first-child > div:nth-child(4) {
+  grid-row: 4;
+  grid-column: 1;
+}
+
+.columns.columns19 > div:last-child > div:nth-child(1) {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.columns.columns19 > div:last-child > div:nth-child(2) {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.columns.columns19 > div:last-child > div:nth-child(3) {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.columns.columns19 > div:last-child > div:nth-child(4) {
+  grid-row: 4;
+  grid-column: 2;
+}
+
+.columns.columns19 > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px; /* tighter gap between icon and text */
+  min-width: 0;
+}
+
+.columns.columns19 picture {
+  display: block;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
+}
+
+.columns.columns19 img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
+}
+
+.columns.columns19 p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  color: #222;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* Responsive: stack to one column on narrow screens */
+@media (width <= 900px) {
+  .columns.columns19 {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  .columns.columns19 > div:first-child > div:nth-child(n) {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .columns.columns19 > div:last-child > div:nth-child(n) {
+    grid-row: auto;
+    grid-column: auto;
   }
 }
