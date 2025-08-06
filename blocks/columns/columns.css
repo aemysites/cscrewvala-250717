@@ -1,8 +1,4 @@
-/* Fixed CSS Code */
-
-/* Disabled no-descending-specificity globally to bypass warning */
 /* stylelint-disable no-descending-specificity */
-
 .columns > div {
   display: flex;
   flex-direction: column;
@@ -299,7 +295,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(4, auto);
-  gap: 20px 28px; /* tighter row and column gaps for a closer match */
+  gap: 20px 28px;
   background: #fff;
   max-width: 1200px;
   margin: 0 auto;
@@ -310,7 +306,6 @@
   display: contents;
 }
 
-/* Explicit grid placement for each feature in row-major order */
 .columns.columns19 > div:first-child > div:nth-child(1) {
   grid-row: 1;
   grid-column: 1;
@@ -355,7 +350,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px; /* tighter gap between icon and text */
+  gap: 8px;
   min-width: 0;
 }
 
@@ -391,7 +386,6 @@
   font-weight: 400;
 }
 
-/* Responsive: stack to one column on narrow screens */
 @media (width <= 900px) {
   .columns.columns19 {
     grid-template-columns: 1fr;
@@ -408,5 +402,60 @@
   .columns.columns19 > div:last-child > div:nth-child(n) {
     grid-row: auto;
     grid-column: auto;
+  }
+}
+
+.columns.columns29 {
+  background: var(--background-color);
+  padding: 0;
+}
+
+.columns.columns29 > div {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  height: 420px; /* Controls card height for desktop, tweak as needed */
+}
+
+.columns.columns29 .columns-img-col {
+  flex: 1 1 0;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.columns.columns29 .columns-img-col picture,
+.columns.columns29 .columns-img-col img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+@media (width <= 900px) {
+  .columns.columns29 > div {
+    flex-direction: column;
+    gap: 24px;
+    height: auto;
+  }
+
+  .columns.columns29 .columns-img-col {
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 240px;
+  }
+
+  .columns.columns29 .columns-img-col picture,
+  .columns.columns29 .columns-img-col img {
+    height: 100%;
   }
 }
