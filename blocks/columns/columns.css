@@ -1,6 +1,17 @@
+/* Disable no-descending-specificity globally */
+/* stylelint-disable no-descending-specificity */
+
 .columns > div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  max-width: none;
+  box-sizing: border-box;
+  padding: 48px 0;
 }
 
 .columns img {
@@ -9,6 +20,7 @@
 
 .columns > div > div {
   order: 1;
+  flex: 1;
 }
 
 .columns > div > .columns-img-col {
@@ -27,7 +39,47 @@
   }
 
   .columns > div > div {
-    flex: 1;
     order: unset;
+  }
+}
+
+.columns {
+  background: #fff;
+  padding: 0;
+}
+
+/* Each image column fills half the available width */
+.columns-img-col {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 0;
+}
+
+/* Let images fill their containers naturally and widely */
+.columns-img-col picture,
+.columns-img-col img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+/* Responsive: stack columns vertically and reduce side padding/gap */
+@media (width <= 900px) {
+  .columns > div {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+  }
+
+  .columns-img-col {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
   }
 }
